@@ -54,6 +54,42 @@ public class LeetCode {
             return false;
         }
     }
+    //LeetCode #14
+    public String longestCommonPrefix(String[] strs) {
+        String prefix = "";
+        int count = 0;
+        boolean switch1 = true;
+        String temp = "";
+        while (switch1){
+
+            try{
+                for(int i = 0;i<strs.length;i++){
+                    temp += strs[i].charAt(count);
+                }
+            }
+            catch(Exception e){
+                return prefix;
+            }
+
+
+            if(temp.equals(Character.toString(strs[0].charAt(count)).repeat(strs.length))){
+                prefix +=strs[0].charAt(count);
+                temp = "";
+            }
+            else{
+                return prefix;
+            }
+
+
+
+
+            count+=1;
+        }
+
+
+
+        return prefix;
+    }
 }
 
 

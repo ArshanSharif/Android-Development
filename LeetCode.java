@@ -1,6 +1,6 @@
 
-import java.util.HashMap;
-
+import java.io.*;
+import java.util.*;
 
 public class LeetCode {
     //Leet code #13
@@ -89,6 +89,31 @@ public class LeetCode {
 
 
         return prefix;
+    }
+    //LeetCode #20
+    public boolean isValid(String s) {
+        Stack<Character> left = new Stack<Character>();
+        for(char c:s.toCharArray()){
+            if (c=='(' || c=='{' || c == '['){
+                left.add(c);
+            }
+            else if(c==')'  && !left.isEmpty() &&  left.peek() == '('){
+                left.pop();
+
+            }
+            else if(c=='}' && !left.isEmpty() &&  left.peek() == '{' ){
+                left.pop();
+
+            }
+            else if(c==']' && !left.isEmpty() &&  left.peek() == '[' ){
+                left.pop();
+
+            }
+            else{
+                return false;
+            }
+        }
+        return left.isEmpty();
     }
 }
 
